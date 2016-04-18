@@ -10,9 +10,9 @@
 class Sequence : public Task {
 
 public:
-    Sequence(const string &argName, int argNumChildren) : Task(argName, argNumChildren), name(argName), numChildren(argNumChildren), status(-1) { }
+    Sequence(const string &argName, int argNumChildren) : Task(argName, argNumChildren){ }
 
-    
+    int run();
 };
 
 

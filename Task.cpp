@@ -9,11 +9,11 @@
 
 using namespace std;
 
-Task::Task(){};
+//Task::Task(){};
 
-Task::Task(string argName, int argNumChildren): name(argName), numChildren(argNumChildren), status(-1){ };
+//Task::Task(string argName, int argNumChildren): name(argName), numChildren(argNumChildren), status(-1){ };
 
-void Task::run(){ }
+int Task::run(){ } //when using this class, override this method with the wanted task
 
 void Task::reset(){
     //clear children

@@ -17,11 +17,11 @@ using namespace std;
 class Task
 {
 public:
-    Task();
+    //Task();
 
-    Task(string argName, int argNumChildren); //constructor
+    Task(string argName, int argNumChildren): name(argName), numChildren(argNumChildren), status(-1){} //constructor
 
-    void run();
+    int run();
 
     void reset();
 
