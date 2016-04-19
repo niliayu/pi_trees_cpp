@@ -7,16 +7,28 @@
 
 #include "../../pi_trees_lib/headers/Task.h"
 //#include "ros/ros.h"
+//#include "std_msgs/Empty.h"
 
 class MonitorTask : public Task {
 
 public:
-    MonitorTask(const string &argName, int argNumChildren) : Task(argName, argNumChildren), waitForMessage(true) { }
-
     bool waitForMessage;
-    int timeout;
-    string topic, msgCB;
-};
+    string topic;
 
+    MonitorTask(const string &argName, string topic) : Task(argName), waitForMessage(true), topic(topic) { }
+
+    /**
+     * In C++, ROS cannot create callbacks without knowing the message type,
+     * so the callback must be overloaded in an instantiation of this class.
+     */
+
+    //void msgCB(const std_msgs::Int32::ConstPtr& msg);
+
+    int run();
+
+    int reset();
+
+    int main(int argc, char **argv);
+};
 
 #endif //PI_TREES_MONITORTASK_H

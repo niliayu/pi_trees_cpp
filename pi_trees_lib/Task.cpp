@@ -45,6 +45,11 @@ int Task::getStatus(){
     return status;
 }
 
+int Task::setStatus(int status){
+    Task::status = status;
+    return status;
+}
+
 bool Task::operator==(const Task& c){
     return (numChildren == c.numChildren) &&
             (status == c.status)&&

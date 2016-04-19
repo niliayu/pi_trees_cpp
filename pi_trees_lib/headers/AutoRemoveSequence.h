@@ -10,7 +10,7 @@
 class AutoRemoveSequence : public Task {
 
 public:
-    AutoRemoveSequence(const string &argName, int argNumChildren) : Task(argName) { }
+    AutoRemoveSequence(const string &argName) : Task(argName) { }
 
     int run();
 };

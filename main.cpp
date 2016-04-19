@@ -5,7 +5,8 @@
 using namespace std;
 
 int main() {
-    Sequence seqTest("test", 2);
-    cout << seqTest.name << endl;
-    cout << seqTest.numChildren << endl;
+    Task test("task_test");
+    cout << test.name << endl;
+    cout << test.children.size() << endl;
+    cout << test.numChildren << endl;
 }

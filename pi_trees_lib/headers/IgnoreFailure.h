@@ -10,7 +10,7 @@
 class IgnoreFailure : public Task {
 
 public:
-    IgnoreFailure(const string &argName, int argNumChildren) : Task(argName) { }
+    IgnoreFailure(const string &argName) : Task(argName) { }
 
     int run();
 };

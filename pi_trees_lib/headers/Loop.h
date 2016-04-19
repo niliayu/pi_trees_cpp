@@ -10,7 +10,7 @@
 class Loop : public Task {
 
 public:
-    Loop(const string &argName, int argNumChildren, int numIt) : Task(argName), iterations(numIt), count(0) { }
+    Loop(const string &argName, int numIt) : Task(argName), iterations(numIt), count(0) { }
 
     int run();
 

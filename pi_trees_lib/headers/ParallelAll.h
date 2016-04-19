@@ -10,7 +10,7 @@
 class ParallelAll : public Task {
 
 public:
-    ParallelAll(const string &argName, int argNumChildren) : Task(argName) { }
+    ParallelAll(const string &argName) : Task(argName) { }
 
     int run();
 
