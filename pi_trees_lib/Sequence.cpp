@@ -2,8 +2,8 @@
 // Created by Ailin on 4/18/2016.
 //
 
-#include "Sequence.h"
-#include "TaskStatus.h"
+#include "headers/Sequence.h"
+#include "headers/TaskStatus.h"
 #include <vector>
 
 //Runs each task in sequence until one fails or we run out of tasks

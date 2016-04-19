@@ -11,7 +11,7 @@
 class Selector: public Task {
 
 public:
-    Selector(const string &argName, int argNumChildren) : Task(argName, argNumChildren) { }
+    Selector(const string &argName, int argNumChildren) : Task(argName) { }
 
     int run();
 };

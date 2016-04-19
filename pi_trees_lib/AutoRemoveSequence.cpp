@@ -2,8 +2,8 @@
 // Created by Ailin on 4/18/2016.
 //
 
-#include "AutoRemoveSequence.h"
-#include "TaskStatus.h"
+#include "headers/AutoRemoveSequence.h"
+#include "headers/TaskStatus.h"
 
 /**
  * Remove each successful task from a sequence.

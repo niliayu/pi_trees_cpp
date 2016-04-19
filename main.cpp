@@ -1,6 +1,6 @@
 #include <iostream>
-#include "Task.h"
-#include "Sequence.h"
+#include "pi_trees_lib/headers/Task.h"
+#include "pi_trees_lib/headers/Sequence.h"
 
 using namespace std;
 

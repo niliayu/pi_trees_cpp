@@ -2,27 +2,29 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/Task.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/IgnoreFailure.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Iterator.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Loop.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ParallelAll.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Selector.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ParallelOne.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/TaskStatus.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Selector.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ParallelOne.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Sequence.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Iterator.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Loop.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/AutoRemoveSequence.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/IgnoreFailure.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Sequence.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/AutoRemoveSequence.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Task.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ParallelAll.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/Sequence.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/ParallelAll.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/Iterator.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/Loop.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/Selector.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/ParallelOne.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/Task.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/AutoRemoveSequence.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/Selector.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/IgnoreFailure.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/Loop.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/Sequence.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/ParallelAll.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/TaskStatus.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/ParallelOne.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/Iterator.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/Task.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/AutoRemoveSequence.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/IgnoreFailure.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_ros/headers/MonitorTask.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_ros/MonitorTask.cpp" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">

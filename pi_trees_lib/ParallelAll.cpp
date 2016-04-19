@@ -2,8 +2,8 @@
 // Created by Ailin on 4/18/2016.
 //
 
-#include "ParallelAll.h"
-#include "TaskStatus.h"
+#include "headers/ParallelAll.h"
+#include "headers/TaskStatus.h"
 
 /**
  * A parallel task runs each child task at (roughly) the same time.

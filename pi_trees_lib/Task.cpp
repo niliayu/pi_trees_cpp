@@ -2,8 +2,8 @@
 // Created by Ailin on 4/16/2016.
 //
 
-#include "Task.h"
-#include "TaskStatus.h"
+#include "headers/Task.h"
+#include "headers/TaskStatus.h"
 #include <vector>
 #include <algorithm>
 

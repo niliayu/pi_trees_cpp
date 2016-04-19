@@ -19,7 +19,7 @@ class Task
 public:
     //Task();
 
-    Task(string argName, int argNumChildren): name(argName), numChildren(argNumChildren), status(-1){} //constructor
+    Task(string argName): name(argName), numChildren(children.size()), status(-1){} //constructor
 
     int run();
 

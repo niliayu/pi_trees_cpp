@@ -10,7 +10,7 @@
 class Iterator : public Task{
 
 public:
-    Iterator(const string &argName, int argNumChildren) : Task(argName, argNumChildren) { }
+    Iterator(const string &argName, int argNumChildren) : Task(argName) { }
 
     int run();
 };
