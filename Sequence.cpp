@@ -14,4 +14,6 @@ int Sequence::run(){
         if(t.status != SUCCESS)
                 return t.status;
     }
+
+    return SUCCESS;
 }
