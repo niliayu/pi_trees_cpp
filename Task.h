@@ -35,6 +35,8 @@ public:
 
     int getStatus();
 
+    void printTree();
+
     bool operator==(const Task& c);
 
     string name;
