@@ -11,20 +11,24 @@
       <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/Selector.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/ParallelOne.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/Task.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/AutoRemoveSequence.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/TaskStatus.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/Selector.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/IgnoreFailure.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/Loop.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/Task.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/Sequence.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/ParallelAll.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/TaskStatus.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/ParallelOne.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/AutoRemoveSequence.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/Iterator.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/headers/Task.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/AutoRemoveSequence.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pi_trees_lib/IgnoreFailure.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pi_trees_ros/headers/MonitorTask.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_ros/headers/ServiceClientTask.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_ros/headers/ActionClientTask.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_ros/ServiceClientTask.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pi_trees_ros/MonitorTask.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pi_trees_ros/ActionClientTask.cpp" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
