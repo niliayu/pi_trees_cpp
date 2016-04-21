@@ -5,7 +5,7 @@
 #ifndef PI_TREES_AUTOREMOVESEQUENCE_H
 #define PI_TREES_AUTOREMOVESEQUENCE_H
 
-#include "Task.h"
+#include <../include/Task.h>
 
 class AutoRemoveSequence : public Task {
 

@@ -2,8 +2,8 @@
 // Created by Ailin on 4/18/2016.
 //
 
-#include "headers/Selector.h"
-#include "headers/TaskStatus.h"
+#include <../include/Selector.h>
+#include <../include/TaskStatus.h>
 
 /*A selector runs each task in order until one succeeds,
  * at which points is returns SUCCESS.  If all tasks fail,

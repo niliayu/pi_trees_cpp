@@ -6,7 +6,7 @@
 #define PI_TREES_SELECTOR_H
 
 
-#include "Task.h"
+#include <../include/Task.h>
 
 class Selector: public Task {
 

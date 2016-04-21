@@ -2,11 +2,11 @@
 // Created by Ailin on 4/20/2016.
 //
 
-#include "headers/ActionClientTask.h"
+#include <../include/ros/ActionClientTask.h>
 
-#include<ros/ros.h>
+#include <ros/ros.h>
 #include <actionlib/client/simple_action_client.h>
-#include<example_action_server/demoAction.h> //reference action message in this package
+#include <example_action_server/demoAction.h> //reference action message in this package
 #include <iostream>
 #include <string>
 #include <std_msgs/Bool.h>
@@ -18,7 +18,13 @@
 using namespace std;
 
 int ActionClientTask::run(){
-    while(!g_alarm){
+
+    geometry_msgs::Pose pose;
+    nav_msgs::Path paths;
+    std::vector<geometry_msgs::PoseStamped> plan;
+    geometry_msgs::PoseStamped pose_stamped;
+
+    while(!alarm){
         plan.clear();//empty old poses
 
         //make sure orientation is set to 0 here; may just have exited alarm state
@@ -51,7 +57,7 @@ int ActionClientTask::run(){
         action_client.sendGoal(goal, &doneCb, &activeCb, &feedbackCb);
         ros::spinOnce();
 
-        ROS_INFO("Alarm (off) state is: %d", g_alarm);
+        ROS_INFO("Alarm (off) state is: %d", alarm);
         usleep(500000);
     }
     ROS_INFO("cancelling goal");
@@ -72,7 +78,7 @@ int ActionClientTask::run(){
     ROS_INFO("sending stop");
     goal.input = paths;
 
-    while(g_alarm){
+    while(alarm){
         plan.clear();//empty old poses
         ROS_INFO("Client: Entered alarm loop");
         pose.position.y = 1.0;
@@ -84,7 +90,7 @@ int ActionClientTask::run(){
         action_client.sendGoal(goal, &doneCb, &activeCb, &feedbackCb);
         ros::spinOnce();
         usleep(500000);
-        ROS_INFO("Alarm (on) state is: %d", g_alarm);
+        ROS_INFO("Alarm (on) state is: %d", alarm);
     }
 }
 
@@ -92,7 +98,7 @@ int ActionClientTask::reset(){}
 
 //specific to example
 
-void ActionClientTask::doneCB(const actionlib::SimpleClientGoalState& state,
+void doneCB(const actionlib::SimpleClientGoalState& state,
             const example_action_server::demoResultConstPtr& result){
     ROS_INFO(" doneCb: server responded with state [%s]", state.toString().c_str());
     ROS_INFO("got result output = %d",result->output);
@@ -100,24 +106,24 @@ void ActionClientTask::doneCB(const actionlib::SimpleClientGoalState& state,
     g_goal_active=false;
 }
 
-void ActionClientTask::feedbackCB(const example_action_server::demoFeedbackConstPtr& fdbk_msg){
+void feedbackCB(const example_action_server::demoFeedbackConstPtr& fdbk_msg){
     ROS_INFO("feedback status = %d",fdbk_msg->fdbk);
     g_fdbk = fdbk_msg->fdbk; //make status available to "main()"
 }
 
-void ActionClientTask::activeCB(){
+void activeCB(){
     ROS_INFO("Goal just went active");
     g_goal_active=true; //let main() know that the server responded that this goal is in process
 }
 
-void ActionClientTask::alarmCB(const std_msgs::Bool& alarm_msg){
+void alarmCB(const std_msgs::Bool& alarm_msg){
     ROS_INFO("Alarm!");
     g_goal_active = false;
-    g_alarm = alarm_msg.data;
+    alarm = alarm_msg.data;
 
 }
 
-void ActionClientTask::locationCB(const std_msgs::Int32& location_message){
+void locationCB(const std_msgs::Int32& location_message){
     //turn here based on value
     if(location_message.data > 0){//turn left
         g_turn_dir = -1;
@@ -127,7 +133,7 @@ void ActionClientTask::locationCB(const std_msgs::Int32& location_message){
     ROS_INFO("Got location");
 }
 
-int ActionClientTask::main(int argc, char** argv){
+int main(int argc, char** argv){
 
     ros::init(argc, argv, "path_client_node"); // name this node
     ros::NodeHandle n;
@@ -154,13 +160,6 @@ int ActionClientTask::main(int argc, char** argv){
         }
         ROS_INFO("connected to action server");  // if here, then we connected to the server;
     }
-
-    ros::Rate loop_timer = 0.05;
-
-    geometry_msgs::Pose pose;
-    nav_msgs::Path paths;
-    std::vector<geometry_msgs::PoseStamped> plan;
-    geometry_msgs::PoseStamped pose_stamped;
 
     while(ros::ok()){
         run();

@@ -2,8 +2,8 @@
 // Created by Ailin on 4/18/2016.
 //
 
-#include "headers/Iterator.h"
-#include "headers/TaskStatus.h"
+#include <../include/Iterator.h>
+#include <../include/TaskStatus.h>
 
 /**
  * Iterate through all child tasks, ignoring any failures.

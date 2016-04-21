@@ -5,7 +5,7 @@
 #ifndef PI_TREES_SEQUENCE_H
 #define PI_TREES_SEQUENCE_H
 
-#include "Task.h"
+#include <../include/Task.h>
 
 class Sequence : public Task {
 

@@ -2,8 +2,8 @@
 // Created by Ailin on 4/18/2016.
 //
 
-#include "headers/Loop.h"
-#include "headers/TaskStatus.h"
+#include <../include/Loop.h>
+#include <../include/TaskStatus.h>
 
 
 /**

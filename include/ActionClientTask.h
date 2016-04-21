@@ -5,7 +5,8 @@
 #ifndef PI_TREES_ACTIONCLIENTTASK_H
 #define PI_TREES_ACTIONCLIENTTASK_H
 
-#include "../../pi_trees_lib/headers/Task.h"
+#include <ros/ros.h>
+#include <../include/lib/Task.h>
 //#include "ros/ros.h"
 
 class ActionClientTask : public Task{
@@ -33,9 +34,9 @@ public:
 
     void alarmCB(const std_msgs::Bool& alarm_msg);
 
-    void locationCB(const std_msgs::Int32& location_message);*/
+    void locationCB(const std_msgs::Int32& location_message);
 
-    int main(int argc, char** argv);
+    int main(int argc, char** argv);*/
 };
 
 

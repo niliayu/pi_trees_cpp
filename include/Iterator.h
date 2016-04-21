@@ -5,7 +5,7 @@
 #ifndef PI_TREES_ITERATOR_H
 #define PI_TREES_ITERATOR_H
 
-#include "Task.h"
+#include <../include/Task.h>
 
 class Iterator : public Task{
 

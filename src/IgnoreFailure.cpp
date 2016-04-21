@@ -2,8 +2,8 @@
 // Created by Ailin on 4/18/2016.
 //
 
-#include "headers/IgnoreFailure.h"
-#include "headers/TaskStatus.h"
+#include <../include/IgnoreFailure.h>
+#include <../include/TaskStatus.h>
 
 /**
  * Always returns either RUNNING or SUCCESS.

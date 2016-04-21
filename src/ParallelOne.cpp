@@ -2,8 +2,8 @@
 // Created by Ailin on 4/18/2016.
 //
 
-#include "headers/ParallelOne.h"
-#include "headers/TaskStatus.h"
+#include <../include/ParallelOne.h>
+#include <../include/TaskStatus.h>
 
 /* *
  * A parallel task runs each child task at (roughly) the same time.

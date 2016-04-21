@@ -5,7 +5,7 @@
 #ifndef PI_TREES_PARALLELALL_H
 #define PI_TREES_PARALLELALL_H
 
-#include "Task.h"
+#include <../include/Task.h>
 
 class ParallelAll : public Task {
 

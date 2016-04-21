@@ -2,7 +2,7 @@
 // Created by Ailin on 4/19/2016.
 //
 
-#include "headers/ServiceClientTask.h"
+#include <pi_trees_cpp/ServiceClientTask.h>
 
 #include <ros/ros.h>
 #include <example_ros_service/PathSrv.h> // this message type is defined in the current package
@@ -11,7 +11,7 @@
 #include <nav_msgs/Path.h>
 #include <geometry_msgs/Pose.h>
 #include <geometry_msgs/PoseStamped.h>
-using namespace std;
+//using namespace std;
 
 /*
  * Turns a service client into a task.

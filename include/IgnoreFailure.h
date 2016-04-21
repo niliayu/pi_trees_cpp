@@ -5,7 +5,7 @@
 #ifndef PI_TREES_IGNOREFAILURE_H
 #define PI_TREES_IGNOREFAILURE_H
 
-#include "Task.h"
+#include <../include/Task.h>
 
 class IgnoreFailure : public Task {
 
