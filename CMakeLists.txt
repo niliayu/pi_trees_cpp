@@ -24,6 +24,8 @@ cs_add_library(callbacktask src/CallbackTask.cpp)
 cs_add_executable(patrol_tree src/patrol_tree.cpp)
 
 target_link_libraries(patrol_tree task)
+target_link_libraries(patrol_tree callbacktask)
+target_link_libraries(patrol_tree sequence)
 
 cs_install()
 cs_export()

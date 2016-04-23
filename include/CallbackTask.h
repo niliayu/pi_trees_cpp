@@ -15,10 +15,10 @@ class CallbackTask : public Task {
 public:
 	//void (*cb)(std_msgs::Bool);//(*cb_)(std_msgs::Bool);
 	//std_msgs::Bool *msg;
-	void (*cb_)(std_msgs::Bool);
-	std_msgs::Bool *msg_;
+	int (*cb_)(std_msgs::Bool);
+	std_msgs::Bool msg_;
 
-    CallbackTask(const string &argName, void (*cb)(std_msgs::Bool), std_msgs::Bool *msg)://, void (*cb)(std_msgs::Bool), std_msgs::Bool *msg) :
+    CallbackTask(const string &argName, int (*cb)(std_msgs::Bool), std_msgs::Bool msg)://, void (*cb)(std_msgs::Bool), std_msgs::Bool *msg) :
             Task(argName){ 
             	cb_ = cb;
             	msg_ = msg;
