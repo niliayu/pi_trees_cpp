@@ -22,6 +22,7 @@ cs_add_library(callbacktask src/CallbackTask.cpp)
 #cs_add_executable(monitor_task src/MonitorTask.cpp)
 #cs_add_executable(service_client_task src/ServiceClientTask.cpp)
 cs_add_executable(patrol_tree src/patrol_tree.cpp)
+cs_add_executable(battery_sim src/battery_sim.cpp)
 
 target_link_libraries(patrol_tree task)
 target_link_libraries(patrol_tree callbacktask)
