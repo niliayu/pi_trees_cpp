@@ -5,6 +5,7 @@
 #include <std_msgs/Float32.h>
 
 #include <../include/Task.h>
+#include <../include/TaskStatus.h>
 #include <../include/Sequence.h>
 #include <../include/Selector.h>
 #include <../include/Loop.h>
@@ -32,16 +33,17 @@ int patrol(std_msgs::Bool bool_msg){
 	//bool_msg.data = true;
 	ROS_INFO("Publishing patrol move");
 	patrol_move.publish(bool_msg);
+	return SUCCESS;
 }
 
 int check_battery_fnc(std_msgs::Bool bool_msg){
 	ROS_INFO("Checking battery");
 	if(battery_level.data < 30){ //0 < value < 100
 		ROS_INFO("Low battery! Level: %f", battery_level.data);
-		return -1;
+		return FAILURE;
 	}else{
 		ROS_INFO("Battery okay. Level: %f", battery_level.data);
-		return 1;
+		return SUCCESS;
 	}
 }
 
@@ -53,11 +55,13 @@ void battery_level_cb(const std_msgs::Float32& level){
 int nav_dock_fnc(std_msgs::Bool bool_msg){
 	ROS_INFO("Navigating to dock");
 	nav_dock.publish(bool_msg);
+	return SUCCESS;
 }
 
 int charging_fnc(std_msgs::Bool bool_msg){
 	ROS_INFO("Charging");
 	charge.publish(bool_msg);
+	return SUCCESS;
 }
 
 int charge_complete_check(std_msgs::Bool bool_msg){
@@ -102,6 +106,8 @@ int main(int argc, char **argv){
   nav_to_dock = &nav_dock_fnc;
   nav_dock = nh.advertise<std_msgs::Bool>("/nav_dock", 1);//publisher to activate client
   CallbackTask navdock("NAVDOCK", nav_to_dock, t);
+
+ 
 
   stay_healthy.addChild(navdock);
   stay_healthy.addChild(check_battery);

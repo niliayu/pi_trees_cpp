@@ -9,12 +9,6 @@
 #include <../include/TaskStatus.h>
 
 int CallbackTask::run(){//void (*cb)(std_msgs::Bool), std_msgs::Bool *msg){
-    if(status < 0){
-        (*cb_)(msg_);
-        status = SUCCESS;
-    }else{
-        status = FAILURE;
-    }
-
+    status = (*cb_)(msg_);
     return status;
 }
