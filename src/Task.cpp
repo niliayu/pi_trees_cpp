@@ -50,6 +50,12 @@ int Task::setStatus(int status){
     return status;
 }
 
+void Task::listChildren(){
+    for(Task &t : children){
+        cout << t.name << endl;
+    }
+}
+
 bool Task::operator==(const Task& c){
     return (numChildren == c.numChildren) &&
             (status == c.status)&&

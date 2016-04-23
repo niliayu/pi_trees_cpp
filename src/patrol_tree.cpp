@@ -50,6 +50,21 @@ void battery_level_cb(const std_msgs::Float32& level){
 	battery_level = level;
 }
 
+int nav_dock_fnc(std_msgs::Bool bool_msg){
+	ROS_INFO("Navigating to dock");
+	nav_dock.publish(bool_msg);
+}
+
+int charging_fnc(std_msgs::Bool bool_msg){
+	ROS_INFO("Charging");
+	charge.publish(bool_msg);
+}
+
+int charge_complete_check(std_msgs::Bool bool_msg){
+	ROS_INFO("Checking if charge is complete");
+	//TODO
+}
+
 int main(int argc, char **argv){
   ros::init(argc, argv, "patrol_tree");
   ros::NodeHandle nh;
@@ -83,9 +98,20 @@ int main(int argc, char **argv){
   battery_level_sub = nh.subscribe("/battery_level", 1, battery_level_cb);
   CallbackTask check_battery("CHECK_BATTERY", check_battery_ref, f);
 
+  int (*nav_to_dock)(std_msgs::Bool); //references to patrol function for CallbackTask
+  nav_to_dock = &nav_dock_fnc;
+  nav_dock = nh.advertise<std_msgs::Bool>("/nav_dock", 1);//publisher to activate client
+  CallbackTask navdock("NAVDOCK", nav_to_dock, t);
+
+  stay_healthy.addChild(navdock);
+  stay_healthy.addChild(check_battery);
+
 
   while(ros::ok()){
+  	ROS_INFO("Running behave");
   	behave.run();
+  	behave.listChildren();
+  	ROS_INFO("Running behave complete");
   	ros::spin();
   }
 

@@ -12,6 +12,7 @@
  * until either SUCCESS or FAILURE is returned from the subtask.
  * */
 int Selector::run(){
+	ROS_INFO("Selector running");
     for(Task &t : children){
         t.status = t.run();
 

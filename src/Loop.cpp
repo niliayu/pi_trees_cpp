@@ -11,6 +11,7 @@
  * Use the value -1 to indicate a continual loop.
  */
 int Loop::run(){
+    ROS_INFO("Loop running");
     while(true){
         if(iterations != -1 && count >= iterations)
             return SUCCESS;

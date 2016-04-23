@@ -43,6 +43,8 @@ public:
 
     void printTree();
 
+    void listChildren();
+
     bool operator==(const Task& c);
 };
 
