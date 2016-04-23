@@ -2,7 +2,7 @@
 // Created by Ailin on 4/20/2016.
 //
 
-#include <../include/ros/ActionClientTask.h>
+#include <../include/ActionClientTask.h>
 
 #include <ros/ros.h>
 #include <actionlib/client/simple_action_client.h>
@@ -17,12 +17,17 @@
 
 using namespace std;
 
-int ActionClientTask::run(){
+example_action_server::demoGoal goal;
+geometry_msgs::Quaternion quat;
+actionlib::SimpleActionClient<example_action_server::demoAction> action_client("path_action", true);//servTopic?
 
-    geometry_msgs::Pose pose;
-    nav_msgs::Path paths;
-    std::vector<geometry_msgs::PoseStamped> plan;
-    geometry_msgs::PoseStamped pose_stamped;
+
+geometry_msgs::Pose pose;
+nav_msgs::Path paths;
+std::vector<geometry_msgs::PoseStamped> plan;
+geometry_msgs::PoseStamped pose_stamped;
+
+int ActionClientTask::run(){
 
     while(!alarm){
         plan.clear();//empty old poses
@@ -94,9 +99,37 @@ int ActionClientTask::run(){
     }
 }
 
-int ActionClientTask::reset(){}
+int ActionClientTask::reset(){
+    ROS_INFO("Reset recieved: cancelling goal");
+    action_client.cancelGoal(); 
+    plan.clear();//empty old poses
+    pose.position.x = 0.0;
+    pose.position.y = 0.0;
+    pose.position.z = 0.0;
+    pose_stamped.pose = pose;
+    plan.push_back(pose_stamped);
+    pose.position.x = 0.0;
+    pose.position.y = 0.0;
+    pose.position.z = 0.0;
+    pose_stamped.pose = pose;
+    plan.push_back(pose_stamped);
+    paths.poses = plan;
+    ROS_INFO("sending stop");
+    goal.input = paths;
+    action_client.sendGoal(goal, &doneCb, &activeCb, &feedbackCb);
+}
 
 //specific to example
+
+
+geometry_msgs::Quaternion convertPlanarPhi2Quaternion(double phi) {
+    geometry_msgs::Quaternion quaternion;
+    quaternion.x = 0.0;
+    quaternion.y = 0.0;  
+    quaternion.z = sin(phi / 2.0);
+    quaternion.w = cos(phi / 2.0);
+    return quaternion;
+}
 
 void doneCB(const actionlib::SimpleClientGoalState& state,
             const example_action_server::demoResultConstPtr& result){
@@ -120,7 +153,6 @@ void alarmCB(const std_msgs::Bool& alarm_msg){
     ROS_INFO("Alarm!");
     g_goal_active = false;
     alarm = alarm_msg.data;
-
 }
 
 void locationCB(const std_msgs::Int32& location_message){
@@ -133,21 +165,19 @@ void locationCB(const std_msgs::Int32& location_message){
     ROS_INFO("Got location");
 }
 
-int main(int argc, char** argv){
+int ActionClientTask::main(int argc, char** argv){
 
     ros::init(argc, argv, "path_client_node"); // name this node
     ros::NodeHandle n;
     ros::Rate main_timer(1.0);
     // here is a "goal" object compatible with the server, as defined in example_action_server/action
-    example_action_server::demoGoal goal;
-    geometry_msgs::Quaternion quat;
 
     ros::Subscriber lidar_alarm_sub = n.subscribe("/lidar_alarm", 1, alarmCB);
     ros::Subscriber lidar_location_sub = n.subscribe("/lidar_location", 1, locationCB);
 
     // use the name of our server, which is: path_action (named in path_action_server.cpp)
     // the "true" argument says that we want our new client to run as a separate thread (a good idea)
-    actionlib::SimpleActionClient<example_action_server::demoAction> action_client(servTopic, true);//"path_action", true);
+    //actionlib::SimpleActionClient<example_action_server::demoAction> action_client(servTopic, true);//"path_action", true);
 
     if(waitForServer){
         ROS_INFO("attempting to connect to server: ");

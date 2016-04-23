@@ -8,9 +8,9 @@
 #include <../include/CallbackTask.h>
 #include <../include/TaskStatus.h>
 
-int CallbackTask::run(void (*cb)(bool), bool *msg){
+int CallbackTask::run(){//void (*cb)(std_msgs::Bool), std_msgs::Bool *msg){
     if(status < 0){
-        (*cb)(*msg);
+        (*cb_)(*msg_);
         status = SUCCESS;
     }else{
         status = FAILURE;

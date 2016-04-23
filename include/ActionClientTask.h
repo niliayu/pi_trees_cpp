@@ -6,7 +6,13 @@
 #define PI_TREES_ACTIONCLIENTTASK_H
 
 #include <ros/ros.h>
-#include <../include/lib/Task.h>
+#include <../include/Task.h>
+#include <actionlib/client/simple_action_client.h>
+#include <example_action_server/demoAction.h> //reference action message in this package
+#include <iostream>
+#include <string>
+#include <std_msgs/Bool.h>
+#include <std_msgs/Int32.h>
 //#include "ros/ros.h"
 
 class ActionClientTask : public Task{
@@ -24,7 +30,7 @@ public:
     int reset();
 
     //specific to example
-    /*
+    
     void doneCB(const actionlib::SimpleClientGoalState& state,
                 const example_action_server::demoResultConstPtr& result);
 
@@ -36,7 +42,7 @@ public:
 
     void locationCB(const std_msgs::Int32& location_message);
 
-    int main(int argc, char** argv);*/
+    int main(int argc, char** argv);
 };
 
 

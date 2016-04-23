@@ -8,14 +8,23 @@
 
 //#include "Task.h"
 #include <../include/Task.h>
+#include <std_msgs/Bool.h>
 
 class CallbackTask : public Task {
 
 public:
-    CallbackTask(const string &argName, void (*cb)(int), bool *msg) :
-            Task(argName){ }
+	//void (*cb)(std_msgs::Bool);//(*cb_)(std_msgs::Bool);
+	//std_msgs::Bool *msg;
+	void (*cb_)(std_msgs::Bool);
+	std_msgs::Bool *msg_;
 
-    int run(void (*cb)(bool), bool *msg);
+    CallbackTask(const string &argName, void (*cb)(std_msgs::Bool), std_msgs::Bool *msg)://, void (*cb)(std_msgs::Bool), std_msgs::Bool *msg) :
+            Task(argName){ 
+            	cb_ = cb;
+            	msg_ = msg;
+            }
+
+    int run();//void (*cb)(std_msgs::Bool), std_msgs::Bool *msg);
 };
 
 
