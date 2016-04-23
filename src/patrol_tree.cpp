@@ -19,6 +19,7 @@ std_msgs::Bool f;
 
 //Battery level of robot
 std_msgs::Float32 battery_level;
+std_msgs::Float32 charge_level;
 
 //Patrol publishers and subscribers
 ros::Publisher patrol_move;
@@ -64,9 +65,18 @@ int charging_fnc(std_msgs::Bool bool_msg){
 	return SUCCESS;
 }
 
+void charge_cb(const std_msgs::Float32& amt){
+	ROS_INFO("Recieved charge amount");
+	charge_level = amt;
+}
+
 int charge_complete_check(std_msgs::Bool bool_msg){
 	ROS_INFO("Checking if charge is complete");
-	//TODO
+	if(charge_level.data >= 100){
+		return SUCCESS;
+	}else{
+		return RUNNING;
+	}
 }
 
 int main(int argc, char **argv){
@@ -102,15 +112,30 @@ int main(int argc, char **argv){
   battery_level_sub = nh.subscribe("/battery_level", 1, battery_level_cb);
   CallbackTask check_battery("CHECK_BATTERY", check_battery_ref, f);
 
+  stay_healthy.addChild(check_battery);
+
+  Sequence recharge("RECHARGE");
+
   int (*nav_to_dock)(std_msgs::Bool); //references to patrol function for CallbackTask
   nav_to_dock = &nav_dock_fnc;
   nav_dock = nh.advertise<std_msgs::Bool>("/nav_dock", 1);//publisher to activate client
   CallbackTask navdock("NAVDOCK", nav_to_dock, t);
 
- 
 
-  stay_healthy.addChild(navdock);
-  stay_healthy.addChild(check_battery);
+  int (*charging_ref)(std_msgs::Bool); //references to patrol function for CallbackTask
+  charging_ref = &charging_fnc;
+  charge = nh.advertise<std_msgs::Bool>("/charging", 1);//publisher to activate client
+  CallbackTask charging("CHARGING", charging_ref, t);
+
+  int (*charge_complete_ref)(std_msgs::Bool);
+  charge_complete_ref = &charging_fnc;
+  check_charge = nh.subscribe("/charge_amt", 1, charge_cb);
+  CallbackTask charge_complete("CHARGE_COMPLETE", charge_complete_ref, f);
+
+
+  recharge.addChild(navdock);
+  recharge.addChild(charging);
+  recharge.addChild(charge_complete);
 
 
   while(ros::ok()){
