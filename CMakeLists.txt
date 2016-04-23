@@ -16,6 +16,7 @@ cs_add_library(parallel_all src/ParallelAll.cpp)
 cs_add_library(parallel_one src/ParallelOne.cpp)
 cs_add_library(selector src/Selector.cpp)
 cs_add_library(sequence src/Sequence.cpp)
+cs_add_library(callbacktask src/CallbackTask.cpp)
 
 #cs_add_executable(action_client_task src/ActionClientTask.cpp)
 #cs_add_executable(monitor_task src/MonitorTask.cpp)
