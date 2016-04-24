@@ -3,4 +3,7 @@
 	<node name="battery_node" pkg="ros_trees_cpp" type="battery_sim" output="screen"/>
 	<node name="demo_action_server_node" pkg="example_action_server" type="example_path_server" output="screen"/>
 	<node name="path_client_node" pkg="example_action_server" type="example_path_client" output="screen"/>
+	
+	<include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+	<include file="$(find mobot_urdf)/launch/mobot_w_lidar.launch"/>
 </launch>
