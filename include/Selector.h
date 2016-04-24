@@ -8,12 +8,12 @@
 
 #include <../include/Task.h>
 
-class Selector: public Task {
+class Selector: virtual public Task {
 
 public:
     Selector(const string &argName) : Task(argName) { }
 
-    int run();
+    int run() override;
 };
 
 

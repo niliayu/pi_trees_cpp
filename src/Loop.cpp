@@ -16,18 +16,19 @@ int Loop::run(){
         if(iterations != -1 && count >= iterations)
             return SUCCESS;
 
-        for(Task &t : children) {
+        for(Task *t : children) {
             while (true) {
-                t.status = t.run();
+                t->status = t->run();
 
-                if (t.status == SUCCESS)
+                if (t->status == SUCCESS)
                     break;
 
-                return t.status;
+                return t->status;
             }
-            t.reset();
+
+            t->reset();
         }
         count += 1;
-        cout << "Loop" << name << "completed with" << count << "iterations" << endl;
+        cout << "Loop " << name << "completed with " << count << "iterations" << endl;
     }
 }

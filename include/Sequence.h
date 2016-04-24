@@ -7,12 +7,12 @@
 
 #include <../include/Task.h>
 
-class Sequence : public Task {
+class Sequence : virtual public Task {
 
 public:
     Sequence(const string &argName) : Task(argName){ }
 
-    int run();
+    int run() override;
 };
 
 

@@ -1,0 +1,5 @@
+<launch>
+	<node name="patrol_tree" pkg="ros_trees_cpp" type="patrol_tree" output="screen"/>
+	<node name="battery_node" pkg="ros_trees_cpp" type="battery_sim" output="screen"/>
+	<node name="demo_action_server_node" pkg="example_action_server" type="example_action_server"/>
+</launch>

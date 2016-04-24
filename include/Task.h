@@ -16,26 +16,27 @@ using namespace std;
 //Base Task class
 class Task
 {
+protected:
+    Task(string argName): name(argName), numChildren(children.size()), status(-1){} //constructor
+
 public:
     //Task();
-    vector<Task> children;
+    vector<Task*> children;
     string name;
     int numChildren;
     int status;
 
-    Task(string argName): name(argName), numChildren(children.size()), status(-1){} //constructor
-
-    int run();
+    virtual int run() = 0;
 
     void reset();
 
-    void addChild(Task c);
+    void addChild(Task* c);
 
-    void removeChild(Task c);
+    void removeChild(Task* c);
 
-    void prependChild(Task c);
+    void prependChild(Task* c);
 
-    void insertChild(Task c, int pos);
+    void insertChild(Task* c, int pos);
 
     int getStatus();
 
@@ -45,7 +46,7 @@ public:
 
     void listChildren();
 
-    bool operator==(const Task& c);
+    //bool operator==(const Task& c);
 };
 
 #endif //PI_TREES_TASK_H

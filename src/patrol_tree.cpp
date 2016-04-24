@@ -49,7 +49,7 @@ int check_battery_fnc(std_msgs::Bool bool_msg){
 }
 
 void battery_level_cb(const std_msgs::Float32& level){
-	ROS_INFO("Recieved battery level");
+	//ROS_INFO("Recieved battery level");
 	battery_level = level;
 }
 
@@ -90,7 +90,7 @@ int main(int argc, char **argv){
   //PATROL BEHAVIOR
   Loop loop_patrol("LOOP_PATROL", 5);
 
-  behave.addChild(loop_patrol);
+  behave.addChild(&loop_patrol);
 
   int (*patrol_ref)(std_msgs::Bool); //references to patrol function for CallbackTask
   patrol_ref = &patrol;
@@ -98,13 +98,13 @@ int main(int argc, char **argv){
   patrol_move = nh.advertise<std_msgs::Bool>("/patrol_move", 1);//publisher to activate client
   CallbackTask patrol_task("PATROL", patrol_ref, t);
   
-  loop_patrol.addChild(patrol_task);
+  loop_patrol.addChild(&patrol_task);
 
 
   //BATTERY MONITORING BEHAVIOR
 
   Selector stay_healthy("STAY_HEALTHY");
-  behave.addChild(stay_healthy);
+  behave.addChild(&stay_healthy);
 
   int (*check_battery_ref)(std_msgs::Bool);
   check_battery_ref = &check_battery_fnc;
@@ -112,7 +112,7 @@ int main(int argc, char **argv){
   battery_level_sub = nh.subscribe("/battery_level", 1, battery_level_cb);
   CallbackTask check_battery("CHECK_BATTERY", check_battery_ref, f);
 
-  stay_healthy.addChild(check_battery);
+  stay_healthy.addChild(&check_battery);
 
   Sequence recharge("RECHARGE");
 
@@ -133,17 +133,19 @@ int main(int argc, char **argv){
   CallbackTask charge_complete("CHARGE_COMPLETE", charge_complete_ref, f);
 
 
-  recharge.addChild(navdock);
-  recharge.addChild(charging);
-  recharge.addChild(charge_complete);
+  recharge.addChild(&navdock);
+  recharge.addChild(&charging);
+  recharge.addChild(&charge_complete);
 
+  ros::Rate loop_rate(10);
 
   while(ros::ok()){
   	ROS_INFO("Running behave");
   	behave.run();
   	behave.listChildren();
   	ROS_INFO("Running behave complete");
-  	ros::spin();
+  	ros::spinOnce();
+    loop_rate.sleep();
   }
 
   return 0;

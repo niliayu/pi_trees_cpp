@@ -7,12 +7,12 @@
 
 #include <../include/Task.h>
 
-class Loop : public Task {
+class Loop : virtual public Task {
 
 public:
     Loop(const string &argName, int numIt) : Task(argName), iterations(numIt), count(0) { }
 
-    int run();
+    int run() override;
 
     int iterations, count;
 };

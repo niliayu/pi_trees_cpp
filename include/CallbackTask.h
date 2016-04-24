@@ -10,7 +10,7 @@
 #include <../include/Task.h>
 #include <std_msgs/Bool.h>
 
-class CallbackTask : public Task {
+class CallbackTask : virtual public Task {
 
 public:
 	//void (*cb)(std_msgs::Bool);//(*cb_)(std_msgs::Bool);
@@ -24,7 +24,7 @@ public:
             	msg_ = msg;
             }
 
-    int run();//void (*cb)(std_msgs::Bool), std_msgs::Bool *msg);
+    int run() override;//void (*cb)(std_msgs::Bool), std_msgs::Bool *msg);
 };
 
 

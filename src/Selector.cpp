@@ -13,11 +13,11 @@
  * */
 int Selector::run(){
 	ROS_INFO("Selector running");
-    for(Task &t : children){
-        t.status = t.run();
+    for(Task *t : children){
+        t->status = t->run();
 
-        if(t.status != FAILURE)
-            return t.status;
+        if(t->status != FAILURE)
+            return t->status;
     }
 
     return FAILURE;

@@ -32,7 +32,7 @@ int main(int argc, char **argv)
   while (ros::ok())
   {
     if(battery_level.data > 0 && !charging){
-        battery_level.data -= 10;
+        battery_level.data -= 5;
     }
 
     if(charging){
