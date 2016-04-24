@@ -10,5 +10,6 @@
 
 int CallbackTask::run(){//void (*cb)(std_msgs::Bool), std_msgs::Bool *msg){
     status = (*cb_)(msg_);
+	cout << "CallbackTask running with status: " << status << endl;
     return status;
 }

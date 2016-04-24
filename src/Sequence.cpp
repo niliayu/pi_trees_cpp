@@ -10,6 +10,7 @@
 int Sequence::run(){
 	ROS_INFO("Sequence running.");
     for(Task *t : children){
+        cout << "running child: " << t->name <<endl;
         t->status = t->run();
 
         if(t->status != SUCCESS)

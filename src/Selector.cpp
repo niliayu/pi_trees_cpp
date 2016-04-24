@@ -15,7 +15,7 @@ int Selector::run(){
 	ROS_INFO("Selector running");
     for(Task *t : children){
         t->status = t->run();
-
+        cout << "Selector running child: " << t->name << "with status" << t->status<< endl;
         if(t->status != FAILURE)
             return t->status;
     }

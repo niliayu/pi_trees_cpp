@@ -14,7 +14,10 @@ public:
 
     int run() override;
 
+    void restart();
+
     int iterations, count;
+    Task *child;
 };
 
 

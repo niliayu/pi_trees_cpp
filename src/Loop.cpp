@@ -11,12 +11,17 @@
  * Use the value -1 to indicate a continual loop.
  */
 int Loop::run(){
-    ROS_INFO("Loop running");
     while(true){
-        if(iterations != -1 && count >= iterations)
+        cout << "Children: " << children.size() << endl;
+        cout << "Count: " << count << endl;
+        cout << "Iterations: " << iterations << endl;
+        if(iterations != -1 && count >= iterations){
+            count = 0;
             return SUCCESS;
-
+        }
         for(Task *t : children) {
+        
+        ROS_INFO("Loop running");
             while (true) {
                 t->status = t->run();
 
@@ -25,10 +30,21 @@ int Loop::run(){
 
                 return t->status;
             }
-
-            t->reset();
+        //child = children[0]; //for reset
+        //t->reset();
         }
-        count += 1;
-        cout << "Loop " << name << "completed with " << count << "iterations" << endl;
+
+    count += 1;
+    cout << "Loop " << name << "completed with " << count << "iterations" << endl;
     }
+}
+
+void Loop::restart(){
+    //ROS_INFO("Restarting loop");
+    count = 0;
+    //addChild(child);
+    //Task *temp = children[0];
+    //reset();
+    //addChild(temp);
+    //run();
 }
