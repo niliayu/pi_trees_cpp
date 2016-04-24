@@ -1,4 +1,7 @@
-/*Description here */
+/*
+* An example class of a patrolling robot
+* who is constantly checking its battery
+* and will stop to recharge ig necessary. */
 
 #include <ros/ros.h>
 #include <std_msgs/Bool.h>
