@@ -9,13 +9,13 @@
  * Always returns either RUNNING or SUCCESS.
  */
 int IgnoreFailure::run(){
-    for(Task &t : children){
-        t.status = t.run();
+    for(Task *t : children){
+        t->status = t->run();
 
-        if(t.status == FAILURE)
+        if(t->status == FAILURE)
             return SUCCESS; //it literally just lies.
         else
-            return t.status;
+            return t->status;
     }
 
     return SUCCESS;

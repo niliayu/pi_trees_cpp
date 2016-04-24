@@ -21,9 +21,9 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "battery_node");
   ros::NodeHandle nh;
 
-  ros::Publisher battery_pub = nh.advertise<std_msgs::Float32>("battery_level", 1);
-  ros::Publisher charge_pub = nh.advertise<std_msgs::Float32>("charge_amt", 1);
-  ros::Subscriber charge_sub = nh.subscribe("charging", 1, chargingCB);
+  ros::Publisher battery_pub = nh.advertise<std_msgs::Float32>("/battery_level", 1);
+  ros::Publisher charge_pub = nh.advertise<std_msgs::Float32>("/charge_amt", 1);
+  ros::Subscriber charge_sub = nh.subscribe("/charging", 1, chargingCB);
 
   battery_level.data = 100;
 

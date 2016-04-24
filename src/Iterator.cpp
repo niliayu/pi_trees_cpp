@@ -9,11 +9,11 @@
  * Iterate through all child tasks, ignoring any failures.
  */
 int Iterator::run(){
-    for(Task &t : children){
-        t.status = t.run();
+    for(Task *t : children){
+        t->status = t->run();
 
-        if(t.status != SUCCESS && t.status != FAILURE)
-            return t.status;
+        if(t->status != SUCCESS && t->status != FAILURE)
+            return t->status;
     }
 
     return SUCCESS;

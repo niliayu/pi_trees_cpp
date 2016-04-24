@@ -13,13 +13,13 @@ int ParallelAll::run(){
     int nSuccess = 0;
     int nChildren = children.size();
 
-    for(Task &t : children){
-        t.status = t.run();
+    for(Task *t : children){
+        t->status = t->run();
 
-        if(t.status == SUCCESS)
+        if(t->status == SUCCESS)
             nSuccess += 1;
 
-        if(t.status == FAILURE)
+        if(t->status == FAILURE)
             return FAILURE;
     }
 

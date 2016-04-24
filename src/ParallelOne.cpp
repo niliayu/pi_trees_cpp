@@ -10,10 +10,10 @@
  * The ParallelOne task returns success as soon as any child succeeds.
  */
 int ParallelOne::run(){
-    for(Task &t : children){
-        t.status = t.run();
+    for(Task *t : children){
+        t->status = t->run();
 
-        if(t.status == SUCCESS){
+        if(t->status == SUCCESS){
             return SUCCESS;
         }
     }
